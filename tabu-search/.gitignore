@@ -1,0 +1,12 @@
+**/__pycache__
+.venv/
+.vscode/
+d2d-summary/
+tsp-summary/
+
+**/.coverage
+**/.coverage.*
+**/*.so
+**/*.log.csv
+compare.png
+run.bat
