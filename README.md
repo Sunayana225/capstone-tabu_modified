@@ -359,6 +359,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Authors
 
 - **Sunayana** - *Initial work* - [Sunayana225](https://github.com/Sunayana225)
+- **Shrinidhi**-[Shrinidhigans](https://github.com/Shrinidhigans)
 
 ## 🙏 Acknowledgments
 
