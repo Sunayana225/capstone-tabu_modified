@@ -1,163 +1,484 @@
-# Tabu Search Implementation for TSP Problems
+# 🔍 Advanced Tabu Search Optimization Platform
 
-A comprehensive implementation of Tabu Search metaheuristic for solving Traveling Salesman Problems (TSP), featuring both a modified advanced version and a clean vanilla implementation with detailed performance metrics.
+> **A comprehensive web-based platform for Tabu Search optimization featuring interactive dashboards, algorithm comparison tools, and AI-powered explanations.**
 
-## 📋 Table of Contents
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red.svg)](https://streamlit.io/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green.svg)](https://fastapi.tiangolo.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Vanilla Tabu Search](#vanilla-tabu-search)
-- [Modified Tabu Search](#modified-tabu-search)
-- [Usage Examples](#usage-examples)
-- [Performance Metrics](#performance-metrics)
-- [TSP Problems](#tsp-problems)
-- [Algorithm Details](#algorithm-details)
-- [Contributing](#contributing)
-- [License](#license)
+## 🎯 **What is This Platform?**
 
-## 🎯 Overview
+This is a **modern, web-based optimization platform** that showcases the power of **Tabu Search** metaheuristic algorithms through:
 
-This project provides two implementations of Tabu Search for TSP problems:
+- �️ **Interactive Web Interface** - Beautiful Streamlit dashboards  
+- 📊 **Algorithm Comparison** - Compare Tabu Search vs Genetic Algorithm, Ant Colony, Simulated Annealing
+- 🤖 **AI Explanations** - Google Gemini integration for plain-English algorithm explanations
+- 🔬 **Educational Tool** - Perfect for learning optimization algorithms
+- ⚡ **Production Ready** - FastAPI backend with professional architecture
 
-1. **Vanilla Tabu Search** (`vanilla_tabu.py`) - A clean, original implementation focusing on the core algorithm with comprehensive timing metrics
-2. **Modified Tabu Search** (`tsp.py`, `d2d.py`) - An advanced implementation with multiple neighborhoods, parallelization, and multi-objective optimization
+---
 
-### Key Features
+## 🚀 **Quick Start - Get Running in 3 Steps**
 
-- ✅ **Multiple TSP Problem Support** - EUC_2D, ATT distance types
-- ✅ **Comprehensive Metrics** - Detailed timing and performance analysis
-- ✅ **Visualization** - Solution plotting and metrics visualization
-- ✅ **Parallel Processing** - Multi-core support for faster execution
-- ✅ **Flexible Parameters** - Configurable iterations, tabu sizes, and stopping criteria
-- ✅ **TSPLIB Integration** - Standard TSP problem format support
-- ✅ **Command Line Interface** - Easy-to-use CLI for both implementations
-
-## 📁 Project Structure
-
-```
-tabu-search/
-├── README.md                          # This file
-├── vanilla_tabu.py                    # Vanilla tabu search implementation
-├── demo_vanilla_tabu.py               # Demonstration script
-├── VANILLA_TABU_README.md             # Detailed vanilla tabu documentation
-├── tsp.py                             # Modified tabu search for TSP
-├── d2d.py                             # Modified tabu search for D2D problems
-├── requirements.txt                   # Python dependencies
-├── setup.cfg                          # Package configuration
-├── pyrightconfig.json                 # Type checking configuration
-├── ts/                                # Core tabu search modules
-│   ├── __init__.py
-│   ├── tsp/                           # TSP-specific implementations
-│   ├── d2d/                           # D2D-specific implementations
-│   ├── abc/                           # Abstract base classes
-│   └── utils/                         # Utility functions
-├── problems/                          # TSP problem instances
-│   ├── tsp/                           # TSPLIB problems
-│   └── d2d/                           # D2D problem instances
-├── scripts/                           # Utility scripts
-├── tests/                             # Test files
-└── extern/                            # External dependencies
+### **Step 1: Clone & Setup**
+```bash
+git clone https://github.com/Sunayana225/capstone-tabu_modified.git
+cd "capstone-tabu_modified"
+pip install -r requirements.txt
 ```
 
-## 🚀 Installation
+### **Step 2: Start the System** 
+```bash
+# Start API Server (Terminal 1)
+.\run_api.ps1
 
-### Prerequisites
+# Start Main Interface (Terminal 2) 
+.\run_ui.ps1
+```
 
-- Python 3.7 or higher
-- pip package manager
+### **Step 3: Open Your Browser**
+- **Main Interface**: http://localhost:8501
+- **Algorithm Comparison**: http://localhost:8502 (via comparison dashboard)
+- **API Documentation**: http://localhost:8000/docs
 
-### Setup
+**🎉 That's it! You're now running a professional optimization platform!**
 
-1. **Clone the repository:**
+---
+
+## 📋 **Table of Contents**
+
+- [Platform Features](#-platform-features)
+- [System Architecture](#️-system-architecture)  
+- [Installation Guide](#-installation-guide)
+- [Usage Guide](#-usage-guide)
+- [Algorithm Details](#-algorithm-details)
+- [API Reference](#-api-reference)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+
+## � **Platform Features**
+
+### **🖥️ Web-Based Interface**
+- **Streamlit Dashboard** - Modern, responsive web interface
+- **Real-time Visualization** - Interactive charts and solution plots
+- **Parameter Tuning** - Easy-to-use controls for algorithm parameters
+- **Progress Tracking** - Live updates during optimization
+
+### **📊 Algorithm Comparison Suite**
+- **Tabu Search** (Vanilla & Modified versions)
+- **Genetic Algorithm** - Population-based evolutionary approach
+- **Ant Colony Optimization** - Pheromone-based swarm intelligence  
+- **Simulated Annealing** - Temperature-based probabilistic search
+- **Side-by-side Comparison** - Performance metrics and visualizations
+
+### **🤖 AI-Powered Explanations**
+- **Google Gemini Integration** - Generate plain-English explanations
+- **Educational Insights** - Understand what algorithms are doing
+- **Beginner-Friendly** - Complex optimization made simple
+
+### **⚡ Professional Architecture**
+- **FastAPI Backend** - High-performance REST API
+- **Modular Design** - Clean, maintainable codebase
+- **TSPLIB Support** - Standard benchmark problems
+- **Extensible Framework** - Easy to add new algorithms
+
+## 🏗️ **System Architecture**
+
+```
+🌐 Web Platform Architecture
+┌─────────────────────────────────────────────────┐
+│  Frontend Layer (Streamlit)                    │
+├─────────────────────────────────────────────────┤
+│  � Main UI (Port 8501)                        │
+│  │  ├── Tabu Search Interface                  │
+│  │  ├── Parameter Controls                     │
+│  │  ├── Visualization Dashboard                │
+│  │  └── AI Explanation Panel                   │
+│  │                                             │
+│  📊 Comparison UI (Port 8502)                  │
+│     ├── Multi-Algorithm Dashboard              │
+│     ├── Performance Comparison                 │
+│     └── Interactive Charts                     │
+└─────────────────────────────────────────────────┘
+                      ↕️ HTTP/REST API
+┌─────────────────────────────────────────────────┐
+│  Backend Layer (FastAPI - Port 8000)           │
+├─────────────────────────────────────────────────┤
+│  🔌 API Endpoints                               │
+│  │  ├── /solve-tsp (Tabu Search)               │
+│  │  ├── /solve-tsp-vanilla                     │
+│  │  ├── /solve-tsp-algorithm (GA, ACO, SA)     │
+│  │  ├── /compare-algorithms                    │
+│  │  └── /available-problems                    │
+│  │                                             │
+│  🧠 Algorithm Wrappers                         │
+│  │  ├── solver_wrapper.py (Tabu Search)        │
+│  │  ├── capstone_wrapper.py (Other Algorithms) │
+│  │  └── gemini_helper.py (AI Explanations)     │
+└─────────────────────────────────────────────────┘
+                      ↕️ Direct Integration  
+┌─────────────────────────────────────────────────┐
+│  Algorithm Layer                                │
+├─────────────────────────────────────────────────┤
+│  � Tabu Search Engine                          │
+│  │  ├── vanilla_tabu.py (Educational)          │
+│  │  ├── tsp.py (Advanced Multi-Neighborhood)   │
+│  │  └── d2d.py (Device-to-Device Problems)     │
+│  │                                             │
+│  🧬 Comparison Algorithms                       │
+│  │  ├── genetic-algo.py                        │
+│  │  ├── ant-colony-opt.py                      │
+│  │  └── simulated-annealing.py                 │
+│  │                                             │
+│  📚 Problem Database (TSPLIB)                   │
+│     ├── berlin52, att48, eil51...               │
+│     └── 100+ TSP benchmark instances            │
+└─────────────────────────────────────────────────┘
+```
+
+### **📁 Directory Structure**
+```
+📦 capstone-tabu_modified/
+├── 🚀 run_api.ps1              # Start API server  
+├── 🚀 run_ui.ps1               # Start main interface
+├── 🚀 run_comparison.bat       # Start comparison dashboard
+├── 📄 requirements.txt         # Python dependencies (everything you need)
+├── 📄 README.md               # This comprehensive documentation
+├── 📁 app/                    # Web application layer
+│   ├── ui.py                  # Main Streamlit interface  
+│   ├── comparison_ui.py       # Algorithm comparison dashboard
+│   ├── api.py                 # FastAPI backend server
+│   ├── solver_wrapper.py      # Tabu search integration
+│   ├── capstone_wrapper.py    # Multi-algorithm wrapper
+│   └── gemini_helper.py       # AI explanation generator
+├── 📁 tabu-search/            # Core tabu search algorithms
+│   ├── vanilla_tabu.py        # Educational implementation
+│   ├── tsp.py                 # Advanced multi-neighborhood  
+│   ├── ts/                    # Algorithm framework
+│   └── problems/              # TSPLIB problem instances
+├── 📁 Capstone/               # Comparison algorithms
+│   ├── genetic-algo.py        # Genetic algorithm
+│   ├── ant-colony-opt.py      # Ant colony optimization
+│   └── simulated-annealing.py # Simulated annealing
+└── 📁 .streamlit/             # Configuration & secrets
+    └── secrets.toml           # API keys (Gemini)
+```
+
+## �️ **Installation Guide**
+
+### **📋 Prerequisites**
+- **Python 3.11+** (recommended) or Python 3.8+
+- **pip package manager** 
+- **Git** (for cloning repository)
+- **Windows PowerShell** (for launch scripts)
+
+### **⚡ Quick Installation**
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Sunayana225/capstone-tabu_modified.git
+cd capstone-tabu_modified
+
+# 2. Install all dependencies  
+pip install -r requirements-app.txt
+
+# 3. Optional: Set up AI explanations (Gemini)
+# Get free API key from: https://makersuite.google.com/app/apikey
+setx GEMINI_API_KEY "your_api_key_here"
+
+# 4. Launch the platform
+.\run_api.ps1     # Start API server (Terminal 1)
+.\run_ui.ps1      # Start web interface (Terminal 2)
+```
+
+### **🔧 Detailed Setup**
+
+#### **Option 1: Standard Installation**
+```bash
+# Install all dependencies (includes web app + algorithms + AI)
+pip install -r requirements.txt
+```
+
+# Virtual Environment (Recommended)**
+```bash
+# Create virtual environment
+python -m venv tabu_env
+
+# Activate environment
+# Windows:
+tabu_env\Scripts\activate
+# macOS/Linux:  
+source tabu_env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### **📦 Core Dependencies**
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `streamlit` | ≥1.28.0 | Web interface framework |
+| `fastapi` | =0.115.0 | REST API backend |
+| `plotly` | ≥5.17.0 | Interactive visualizations |
+| `pandas` | ≥2.0.0 | Data manipulation |
+| `matplotlib` | ≥3.7.0 | Static plotting |
+| `google-generativeai` | ≥0.8.0 | AI explanations (optional) |
+
+### **🤖 AI Explanation Setup (Optional)**
+
+To enable AI-powered explanations:
+
+1. **Get Gemini API Key**: Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. **Set Environment Variable**:
    ```bash
-   git clone https://github.com/Sunayana225/capstone-tabu_modified.git
-   cd capstone-tabu_modified
-   ```
-
-2. **Create a virtual environment (recommended):**
-   ```bash
-   python -m venv .venv
+   # Windows
+   setx GEMINI_API_KEY "your_api_key_here"
    
-   # On Windows
-   .venv\Scripts\activate
-   
-   # On macOS/Linux
-   source .venv/bin/activate
+   # macOS/Linux
+   export GEMINI_API_KEY="your_api_key_here"
+   ```
+3. **Or create `.streamlit/secrets.toml`**:
+   ```toml
+   GEMINI_API_KEY = "your_api_key_here"
    ```
 
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Dependencies
-
-The project requires the following Python packages:
-
-- `matplotlib` - For plotting solutions and metrics
-- `tqdm` - For progress bars
-- `numpy` - For numerical computations
-- `pybind11` - For C++ extensions (optional)
-
-## 🏃‍♂️ Quick Start
-
-### Vanilla Tabu Search
-
-The simplest way to run the vanilla tabu search:
-
+### **✅ Verify Installation**
 ```bash
-# Basic usage with default parameters
-python vanilla_tabu.py berlin52
+# Test API server
+python -c "import streamlit, fastapi, plotly; print('✅ All packages installed')"
 
-# With custom parameters and verbose output
-python vanilla_tabu.py att48 -i 200 -t 15 -v
-
-# Show solution plot
-python vanilla_tabu.py eil51 -p
-
-# Run demonstration on multiple problems
-python demo_vanilla_tabu.py
+# Test AI integration (optional)
+python -c "import google.generativeai; print('✅ Gemini AI ready')"
 ```
 
-### Modified Tabu Search
+## � **Usage Guide**
 
-For the advanced implementation:
+### **🚀 Starting the Platform**
 
+#### **Method 1: PowerShell Scripts (Recommended)**
 ```bash
-# TSP problems
-python tsp.py berlin52 -i 500 -t 10 -v
+# Terminal 1: Start API Server
+.\run_api.ps1
 
-# D2D problems
-python d2d.py 6.5.1 -i 1000 -t 15 -v
+# Terminal 2: Start Main Interface  
+.\run_ui.ps1
+
+# Terminal 3: Start Comparison Dashboard (Optional)
+.\run_comparison.bat
 ```
 
-## 🔬 Vanilla Tabu Search
-
-The vanilla implementation provides a clean, educational version of tabu search with detailed metrics.
-
-### Features
-
-- **Original Algorithm**: Classic tabu search with 2-opt neighborhood
-- **Comprehensive Metrics**: Execution time, iterations, improvements
-- **Visualization**: Solution plots and performance charts
-- **Flexible Parameters**: Configurable search parameters
-
-### Command Line Options
-
+#### **Method 2: Manual Commands**
 ```bash
-python vanilla_tabu.py <problem> [options]
+# Start API Server (Port 8000)
+uvicorn app.api:app --reload --port 8000
 
-Options:
-  -i, --iterations      Maximum iterations (default: 1000)
-  -t, --tabu-size       Tabu list size (default: 10)
-  -n, --no-improvement  Max iterations without improvement (default: 100)
-  -v, --verbose         Show detailed progress
-  -p, --plot            Show solution plot
-  -m, --metrics-plot    Show metrics plot
-  -d, --dump            Save results to JSON file
+# Start Main Interface (Port 8501)
+streamlit run app/ui.py --server.port 8501
+
+# Start Comparison Dashboard (Port 8502)  
+streamlit run app/comparison_ui.py --server.port 8502
 ```
+
+### **🖥️ Using the Web Interface**
+
+#### **Main Interface (http://localhost:8501)**
+1. **Select TSP Problem**: Choose from 100+ TSPLIB instances
+2. **Configure Parameters**: 
+   - Iterations: 100-2000 (default: 500)
+   - Tabu Size: 5-50 (default: 10)  
+   - Algorithm Type: Vanilla vs Modified
+3. **Enable AI Explanations**: Check "Generate plain-English explanation"
+4. **Run Optimization**: Click "Solve TSP Problem"
+5. **View Results**: Interactive charts, solution plots, performance metrics
+
+#### **Comparison Dashboard (http://localhost:8502)**
+1. **Navigate to "Algorithm Comparison"**
+2. **Select Algorithms**: Choose from GA, ACO, SA, Tabu Search
+3. **Configure Each Algorithm**: Set population size, iterations, etc.
+4. **Run Comparison**: Click "Run TSP Comparison"  
+5. **Analyze Results**: Side-by-side performance charts
+
+### **📊 Understanding Results**
+
+#### **Performance Metrics**
+- **Cost**: Total distance (lower = better)
+- **Time**: Execution time in milliseconds
+- **Iterations**: Number of search iterations performed
+- **Improvements**: How many times better solutions were found
+
+#### **Visualizations**
+- **Solution Plot**: Shows the optimal tour path
+- **Cost History**: Progress during optimization
+- **Comparison Charts**: Algorithm performance side-by-side
+
+### **🔍 Advanced Usage**
+
+#### **Command Line Interface** (For developers)
+```bash
+# Navigate to algorithm directory
+cd tabu-search
+
+# Run vanilla tabu search
+python vanilla_tabu.py berlin52 -i 1000 -t 15 -v -p
+
+# Run advanced tabu search  
+python tsp.py att48 -i 500 -t 10 --pool-size 4 -v
+
+# Parameters:
+# -i, --iterations     Number of iterations (default: 500)
+# -t, --tabu-size      Tabu list size (default: 10)
+# -v, --verbose        Show progress and plots
+# -p, --plot           Display solution visualization
+# -d, --dump           Save results to JSON file
+```
+
+#### **API Endpoints** (For integration)
+```python
+import requests
+
+# Solve TSP problem via API
+response = requests.post("http://localhost:8000/solve-tsp", json={
+    "problem": "berlin52",
+    "iterations": 500,
+    "tabu_size": 10,
+    "verbose": False
+})
+
+result = response.json()
+print(f"Best cost: {result['solution']['cost']}")
+```
+
+## 🧠 **Algorithm Details**
+
+### **🔍 Tabu Search Overview**
+
+Tabu Search is a metaheuristic algorithm that guides local search procedures to explore solution spaces beyond local optimality. It uses **memory structures** (tabu lists) to avoid cycling and encourage exploration of new regions.
+
+#### **Core Concepts**
+- **Memory-Based Search**: Remembers recent moves to avoid cycling
+- **Aspiration Criteria**: Overrides tabu restrictions for exceptional solutions  
+- **Intensification & Diversification**: Balances local improvement with exploration
+- **Neighborhood Exploration**: Systematically examines solution modifications
+
+### **🎯 Algorithm Implementations**
+
+#### **1. Vanilla Tabu Search** (`vanilla_tabu.py`)
+*Educational implementation focusing on core algorithm clarity*
+
+```python
+# Key Features
+✅ 2-opt Neighborhood Structure
+✅ Fixed-Size Tabu List (FIFO)
+✅ Simple Aspiration Criteria
+✅ Comprehensive Performance Metrics
+✅ Visualization & Plotting Support
+
+# Best For: Learning, Quick Testing, Understanding Fundamentals
+```
+
+**Algorithm Flow:**
+```
+1. Generate initial solution (Nearest Neighbor)
+2. For each iteration:
+   ├── Generate all 2-opt neighbors
+   ├── Find best non-tabu neighbor  
+   ├── Apply aspiration if move improves best solution
+   ├── Update current solution & tabu list
+   └── Track performance metrics
+3. Return best solution found
+```
+
+#### **2. Advanced Tabu Search** (`tsp.py`)
+*Production-ready implementation with advanced features*
+
+```python
+# Advanced Features  
+✅ Multiple Neighborhood Types (Swap, SegmentShift, SegmentReverse)
+✅ Parallel Neighborhood Evaluation
+✅ Adaptive Shuffling Mechanism
+✅ Post-Optimization Local Search
+✅ Multi-Core Processing Support
+
+# Best For: Research, Production Systems, Complex Problems
+```
+
+**Enhanced Algorithm Flow:**
+```
+1. Initialize with nearest neighbor heuristic
+2. Main tabu search loop:
+   ├── Evaluate multiple neighborhoods in parallel
+   ├── Apply tabu restrictions per neighborhood
+   ├── Select best non-tabu move across all neighborhoods
+   ├── Update solution and multiple tabu lists
+   └── Apply shuffling if stagnation detected
+3. Post-optimization refinement
+4. Return optimized solution
+```
+
+### **🏆 Comparison Algorithms**
+
+#### **🧬 Genetic Algorithm** (`genetic-algo.py`)
+- **Population-Based**: Maintains multiple solutions simultaneously
+- **Crossover & Mutation**: Combines good solutions, introduces variation
+- **Selection Pressure**: Favors better solutions for reproduction
+- **Best For**: Complex landscapes, global optimization
+
+#### **🐜 Ant Colony Optimization** (`ant-colony-opt.py`)  
+- **Swarm Intelligence**: Multiple agents (ants) construct solutions
+- **Pheromone Trails**: Indirect communication guides search
+- **Probabilistic Construction**: Solutions built step-by-step
+- **Best For**: Path-finding problems, dynamic environments
+
+#### **🌡️ Simulated Annealing** (`simulated-annealing.py`)
+- **Temperature-Based**: Accepts worse moves with decreasing probability
+- **Cooling Schedule**: Gradually reduces acceptance of bad moves
+- **Single Solution**: Maintains one current solution
+- **Best For**: Continuous optimization, avoiding local optima
+
+### **📊 Algorithm Comparison Matrix**
+
+| Feature | Tabu Search | Genetic Algorithm | Ant Colony | Simulated Annealing |
+|---------|-------------|-------------------|------------|-------------------|
+| **Memory Usage** | ✅ Explicit (Tabu List) | ✅ Implicit (Population) | ✅ Pheromone Matrix | ❌ No Memory |
+| **Population** | Single Solution | Multiple Solutions | Multiple Agents | Single Solution |
+| **Deterministic** | ✅ Mostly | ❌ Stochastic | ❌ Probabilistic | ❌ Probabilistic |
+| **Parameter Sensitivity** | 🟡 Medium | 🔴 High | 🔴 High | 🟡 Medium |
+| **Convergence Speed** | ✅ Fast | 🟡 Medium | 🟡 Medium | 🔴 Slow |
+| **Solution Quality** | ✅ High | ✅ High | 🟡 Good | 🟡 Good |
+| **Scalability** | ✅ Excellent | 🟡 Good | 🟡 Good | ✅ Excellent |
+
+### **🎯 TSP Problem Support**
+
+#### **TSPLIB Integration**
+- **100+ Benchmark Problems**: From 14 to 85,900 cities
+- **Multiple Distance Types**: EUC_2D, ATT, CEIL_2D, GEO
+- **Optimal Solutions**: Known best solutions for validation
+- **Standard Format**: Industry-recognized problem instances
+
+#### **Popular Test Problems**
+| Problem | Cities | Optimal Cost | Difficulty | Description |
+|---------|--------|--------------|------------|-------------|
+| `berlin52` | 52 | 7,542 | 🟢 Easy | Berlin city locations |
+| `att48` | 48 | 10,628 | 🟢 Easy | ATT distance metric |
+| `eil51` | 51 | 426 | 🟢 Easy | Christofides & Eilon |
+| `a280` | 280 | 2,579 | 🟡 Medium | Large instance |
+| `pr2392` | 2,392 | 378,032 | 🔴 Hard | Very large instance |
+
+### **⚡ Performance Optimization**
+
+#### **Parallel Processing**
+- **Multi-Core Support**: Utilizes all available CPU cores
+- **Neighborhood Parallelization**: Evaluates neighborhoods simultaneously  
+- **Process Pool**: Efficient task distribution
+- **Automatic Scaling**: Adapts to system capabilities
+
+#### **Memory Management**  
+- **Efficient Data Structures**: Optimized for speed and memory
+- **Tabu List Optimization**: Fixed-size circular buffers
+- **Solution Caching**: Avoids redundant calculations
+- **Garbage Collection**: Proper memory cleanup
 
 ### Example Output
 
@@ -177,203 +498,288 @@ Improvement rate: 12.50%
 ============================================================
 ```
 
-## ⚡ Modified Tabu Search
+## 🔌 **API Reference**
 
-The modified implementation includes advanced features for research and production use.
+### **FastAPI Backend Endpoints**
 
-### Features
+The platform provides a RESTful API for programmatic access:
 
-- **Multiple Neighborhoods**: Swap, SegmentShift, SegmentReverse
-- **Parallel Processing**: Multi-core neighborhood evaluation
-- **Multi-objective**: Support for D2D problems
-- **Advanced Metrics**: Comprehensive performance tracking
-- **Post-optimization**: Additional local search phases
+#### **Core Endpoints**
 
-### TSP Usage
-
-```bash
-python tsp.py <problem> [options]
-
-Options:
-  -i, --iterations      Number of iterations (default: 500)
-  -s, --shuffle-after   Shuffle after N non-improved iterations (default: 50)
-  -t, --tabu-size       Tabu size for neighborhoods (default: 10)
-  -o, --optimal         Read optimal solution from archive
-  -v, --verbose         Show progress bar and plot
-  -d, --dump            Save solution to file
-  --pool-size           Process pool size (default: CPU count)
+```http
+GET  /health                    # API health check
+GET  /available-problems        # List all TSP problems  
+POST /solve-tsp                 # Run advanced tabu search
+POST /solve-tsp-vanilla         # Run vanilla tabu search
+POST /solve-tsp-algorithm       # Run comparison algorithms
+POST /compare-tsp-algorithms    # Multi-algorithm comparison
 ```
 
-### D2D Usage
+#### **Example API Usage**
 
-```bash
-python d2d.py <problem> [options]
+```python
+import requests
 
-Options:
-  -i, --iterations           Number of iterations (default: 1500)
-  -t, --tabu-size           Tabu size (default: 10)
-  -c, --drone-config        Drone configuration index (default: 0)
-  -e, --energy-mode         Energy mode: linear, non-linear, endurance
-  -k, --propagation-priority Propagation priority strategy
-  -m, --max-propagation     Max propagating solutions (default: 5)
-  -v, --verbose             Show progress and plots
-  -d, --dump                Save results to file
+# Solve TSP with advanced tabu search
+response = requests.post("http://localhost:8000/solve-tsp", json={
+    "problem": "berlin52",
+    "iterations": 500,
+    "shuffle_after": 50,
+    "tabu_size": 10,
+    "pool_size": 4,
+    "verbose": False
+})
+
+result = response.json()
+print(f"Solution cost: {result['solution']['cost']}")
+print(f"Execution time: {result['elapsed_ms']}ms")
+
+# Compare multiple algorithms
+comparison = requests.post("http://localhost:8000/compare-tsp-algorithms", json={
+    "algorithms": ["genetic_algorithm", "ant_colony_optimization", "tabu_search"],
+    "problem": "att48",
+    "runs": 3
+})
+
+results = comparison.json()
+for algo, data in results['algorithms'].items():
+    print(f"{algo}: {data['solution']['cost']}")
 ```
 
-## 📊 Performance Metrics
+#### **Request/Response Schemas**
 
-Both implementations provide detailed performance metrics:
+```typescript
+// TSP Solve Request
+interface TSPRequest {
+    problem: string;           // TSP problem name
+    iterations?: number;       // Default: 500
+    tabu_size?: number;       // Default: 10  
+    shuffle_after?: number;   // Default: 50
+    pool_size?: number;       // Default: CPU count
+    verbose?: boolean;        // Default: false
+}
 
-### Timing Metrics
-- **Total execution time** - Wall-clock time for the entire search
-- **Time per iteration** - Average time per search iteration
-- **Iterations per second** - Search speed metric
-
-### Search Metrics
-- **Total iterations** - Number of search iterations performed
-- **Improvements found** - Number of times a better solution was found
-- **Tabu moves** - Number of moves made while in tabu status
-- **Improvement rate** - Percentage of iterations that found improvements
-
-### Solution Metrics
-- **Initial cost** - Cost of the starting solution
-- **Final cost** - Cost of the best solution found
-- **Improvement** - Absolute and percentage improvement
-- **Cost history** - Cost progression throughout the search
-
-## 🗺️ TSP Problems
-
-The project includes support for TSPLIB problems:
-
-### Available Problems
-
-| Problem | Cities | Type | Description |
-|---------|--------|------|-------------|
-| berlin52 | 52 | EUC_2D | Berlin city tour |
-| att48 | 48 | ATT | ATT48 problem |
-| eil51 | 51 | EUC_2D | Eil51 problem |
-| a280 | 280 | EUC_2D | Large TSP instance |
-| pr2392 | 2392 | EUC_2D | Very large instance |
-
-### Problem Formats
-
-- **EUC_2D**: Euclidean 2D coordinates
-- **ATT**: Pseudo-Euclidean distance (ATT format)
-- **CEIL_2D**: Ceiling of Euclidean distance
-
-## 🔧 Algorithm Details
-
-### Vanilla Tabu Search Algorithm
-
-1. **Initialization**
-   - Generate initial solution using nearest neighbor heuristic
-   - Initialize empty tabu list
-   - Set best solution to initial solution
-
-2. **Main Loop**
-   - Generate all 2-opt neighbors
-   - Find best non-tabu neighbor
-   - Apply aspiration criteria (allow tabu if better than best)
-   - Update current solution
-   - Add move to tabu list
-   - Update best solution if improved
-
-3. **Termination**
-   - Stop after maximum iterations
-   - Stop if no improvement for specified iterations
-   - Return best solution found
-
-### Modified Tabu Search Features
-
-- **Multiple Neighborhoods**: Different move types for exploration
-- **Parallel Evaluation**: Multi-core neighborhood evaluation
-- **Shuffling**: Random perturbations to escape local optima
-- **Post-optimization**: Additional local search phases
-- **Multi-objective**: Support for multiple optimization criteria
-
-## 📈 Example Results
-
-### Performance Comparison
-
-| Problem | Algorithm | Initial Cost | Final Cost | Improvement | Time (s) |
-|---------|-----------|--------------|------------|-------------|----------|
-| berlin52 | Vanilla | 8980.92 | 7938.77 | 11.60% | 1.069 |
-| berlin52 | Modified | 8980.92 | 7542.00 | 16.02% | 2.145 |
-| att48 | Vanilla | 12861.00 | 11118.00 | 13.55% | 0.344 |
-| att48 | Modified | 12861.00 | 10628.00 | 17.36% | 0.892 |
-
-### Key Insights
-
-- **Vanilla Tabu Search**: Faster execution, good for understanding the algorithm
-- **Modified Tabu Search**: Better solution quality, suitable for research/production
-- **Both implementations**: Provide comprehensive metrics for analysis
-
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-# Run all tests
-python -m pytest tests/
-
-# Run specific test files
-python -m pytest tests/tsp_test.py
-python -m pytest tests/d2d_test.py
+// TSP Response
+interface TSPResponse {
+    problem: string;
+    solution: {
+        cost: number;
+        path: number[];
+    };
+    parameters: TSPRequest;
+    elapsed_ms: number;
+    plot_base64?: string;     // If verbose=true
+}
 ```
 
-## 📚 Documentation
+### **🌐 Web Interface Endpoints**
 
-- [Vanilla Tabu Search Documentation](VANILLA_TABU_README.md) - Detailed vanilla implementation guide
-- [TSPLIB Documentation](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/) - TSP problem format
-- [Tabu Search Theory](https://en.wikipedia.org/wiki/Tabu_search) - Algorithm background
+- **Main Interface**: http://localhost:8501
+  - Interactive TSP solver
+  - Parameter configuration
+  - AI explanations  
+  - Real-time visualization
 
-## 🤝 Contributing
+- **Comparison Dashboard**: http://localhost:8502  
+  - Multi-algorithm comparison
+  - Performance analysis
+  - Side-by-side charts
 
-Contributions are welcome! Please follow these steps:
+- **API Documentation**: http://localhost:8000/docs
+  - Interactive Swagger UI
+  - Endpoint testing
+  - Schema documentation
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## � **Troubleshooting**
 
-### Development Setup
+### **Common Issues & Solutions**
 
+#### **❌ Port Already in Use**
 ```bash
-# Install development dependencies
+# Error: Address already in use: port 8501
+# Solution: Kill existing processes
+taskkill /f /im python.exe
+# Or use different ports:
+streamlit run app/ui.py --server.port 8503
+```
+
+#### **❌ Module Import Errors**
+```bash
+# Error: ModuleNotFoundError: No module named 'streamlit'
+# Solution: Install dependencies
 pip install -r requirements.txt
-pip install pytest black flake8
 
-# Run linting
-python -m black .
-python -m flake8 .
-
-# Run tests
-python -m pytest
+# Error: No module named 'ts'
+# Solution: Install tabu-search dependencies  
+cd tabu-search && pip install -r requirements.txt
 ```
 
-## 📄 License
+#### **❌ API Connection Failed**
+```bash
+# Error: Connection refused to localhost:8000
+# Solution: Start API server first
+.\run_api.ps1
+# Wait for "Uvicorn running on http://127.0.0.1:8000"
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+#### **❌ Gemini API Errors**
+```bash
+# Error: Gemini SDK not installed
+pip install google-generativeai
 
-## 👥 Authors
+# Error: Invalid API key
+# Solution: Set correct environment variable
+setx GEMINI_API_KEY "your_actual_api_key"
+```
 
-- **Sunayana** - *Initial work* - [Sunayana225](https://github.com/Sunayana225)
+### **Performance Tips**
 
-## 🙏 Acknowledgments
+#### **🚀 Speed Optimization**
+- **Reduce Iterations**: Start with 100-200 for testing
+- **Smaller Problems**: Use berlin52, att48 for quick tests
+- **Disable Verbose**: Turn off progress bars for faster execution
+- **Use Pool Size**: Set `--pool-size` to your CPU core count
 
-- TSPLIB for providing standard TSP problem instances
-- The tabu search research community for algorithm development
-- Contributors and users who provided feedback and improvements
+#### **💾 Memory Management**
+- **Large Problems**: Increase system virtual memory for 1000+ city problems
+- **Multiple Runs**: Close browser tabs between comparison runs
+- **Clear Cache**: Restart servers if memory usage grows
 
-## 📞 Support
+### **🔍 Debugging**
 
-If you encounter any issues or have questions:
+#### **Enable Debug Mode**
+```bash
+# API Server Debug
+uvicorn app.api:app --reload --log-level debug
 
-1. Check the [Issues](https://github.com/Sunayana225/capstone-tabu_modified/issues) page
-2. Create a new issue with detailed information
-3. Contact: yakkalasunayana1605@gmail.com
+# Streamlit Debug  
+streamlit run app/ui.py --logger.level debug
+```
+
+#### **Check Logs**
+```bash
+# View API logs
+tail -f uvicorn.log
+
+# Check Python errors
+python -u app/ui.py 2>&1 | tee streamlit.log
+```
+
+### **📞 Getting Help**
+
+- **GitHub Issues**: [Report bugs & request features](https://github.com/Sunayana225/capstone-tabu_modified/issues)
+- **Documentation**: Check this README and `COMPARISON_README.md`
+- **API Docs**: Visit http://localhost:8000/docs when server is running
+
+## 🤝 **Contributing**
+
+We welcome contributions! Here's how to get involved:
+
+### **🛠️ Development Setup**
+```bash
+# Fork and clone the repository
+git clone https://github.com/your-username/capstone-tabu_modified.git
+cd capstone-tabu_modified
+
+# Create development branch
+git checkout -b feature/your-feature-name
+
+# Install all dependencies
+pip install -r requirements.txt
+pip install -r tabu-search/requirements.txt
+
+# Make your changes and test
+python -m pytest tabu-search/tests/
+```
+
+### **📝 Contribution Areas**
+- 🔍 **New Algorithms**: Add other metaheuristics (PSO, DE, etc.)
+- 🎨 **UI Improvements**: Enhance Streamlit interface
+- 📊 **Visualizations**: Create new chart types
+- 🧪 **Test Coverage**: Add unit tests
+- 📚 **Documentation**: Improve guides and examples
+- 🐛 **Bug Fixes**: Fix issues and optimize performance
+
+### **📋 Pull Request Process**
+1. **Create Issue**: Describe the feature/fix
+2. **Fork & Branch**: Work on a feature branch
+3. **Test**: Ensure all tests pass
+4. **Document**: Update README if needed
+5. **Submit PR**: Provide clear description
+
+### **🎯 Code Style**
+- **Python**: Follow PEP 8 guidelines
+- **Type Hints**: Use type annotations
+- **Docstrings**: Document functions and classes  
+- **Comments**: Explain complex logic
+
+## � **License & Credits**
+
+### **📜 License**
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License - Free for commercial and personal use
+✅ Commercial use    ✅ Modification    ✅ Distribution    ✅ Private use
+```
+
+### **👥 Authors**
+- **[Sunayana](https://github.com/Sunayana225)** - *Principal Developer & Researcher*
+  - Core algorithm implementation
+  - Web platform architecture  
+  - Performance optimization
+
+### **🙏 Acknowledgments**
+- **TSPLIB** - Providing standard benchmark problems
+- **Streamlit Team** - Amazing web framework for Python
+- **FastAPI** - High-performance API framework
+- **Google Gemini** - AI-powered explanations
+- **Research Community** - Tabu search algorithm development
+- **Open Source Contributors** - Libraries and tools used
+
+### **📚 References**
+- Glover, F. (1986). "Future paths for integer programming and links to artificial intelligence"
+- Gendreau, M., & Potvin, J. Y. (2010). "Handbook of metaheuristics"
+- TSPLIB: http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/
+- Tabu Search: https://en.wikipedia.org/wiki/Tabu_search
 
 ---
 
-**Happy Optimizing! 🚀**
+## 🎉 **What's Next?**
+
+### **🚀 Quick Actions**
+1. **⭐ Star this repository** if you found it useful
+2. **🍴 Fork it** to create your own version  
+3. **📝 Try the examples** in the Usage Guide
+4. **🐛 Report issues** if you find any bugs
+5. **💡 Suggest features** for future improvements
+
+### **📈 Roadmap**
+- 🔮 **Multi-Objective Optimization** - NSGA-II, SPEA2 integration
+- 🌐 **Cloud Deployment** - Docker containerization, cloud hosting
+- 📱 **Mobile Interface** - Responsive design for tablets/phones
+- 🤖 **Advanced AI** - GPT integration, automated parameter tuning
+- 📊 **Analytics Dashboard** - Usage statistics, performance tracking
+
+### **🎓 Educational Use**
+Perfect for:
+- **Computer Science Courses** - Algorithm analysis and implementation
+- **Operations Research** - Optimization methods and metaheuristics  
+- **Research Projects** - Benchmark testing and algorithm development
+- **Industry Training** - Learning optimization techniques
+
+---
+
+<div align="center">
+
+### **🌟 Built with ❤️ for the Optimization Community**
+
+**[🏠 Homepage](https://github.com/Sunayana225/capstone-tabu_modified) • [📖 Documentation](README.md) • [🐛 Issues](https://github.com/Sunayana225/capstone-tabu_modified/issues) • [💬 Discussions](https://github.com/Sunayana225/capstone-tabu_modified/discussions)**
+
+*Happy Optimizing! 🚀*
+
+</div>
+
+
+
+
