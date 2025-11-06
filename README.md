@@ -240,8 +240,10 @@ To enable AI-powered explanations:
    export GEMINI_API_KEY="your_api_key_here"
    ```
 3. **Or create `.streamlit/secrets.toml`**:
-   ```toml
-   GEMINI_API_KEY = "your_api_key_here"
+   ```bash
+   # Copy the template and add your key
+   cp .streamlit/secrets.toml.template .streamlit/secrets.toml
+   # Edit secrets.toml and replace "your_gemini_api_key_here" with your actual key
    ```
 
 ### **✅ Verify Installation**
